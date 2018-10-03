@@ -14,14 +14,22 @@ public class DrawRocket {
         drawDivider();
         drawUp();
         drawDown();
+        drawDivider();
+        drawDown();
+        drawUp();
+        drawDivider();
+        drawCone();
     }
     public static void drawCone(){
-        for (int i = 1; i < (SIZE * 2); i++){
-            for(int j = 0; j < i; j++){
+        for (int rows = 1; rows < (SIZE * 2); rows++){
+            for(int spaces = SIZE * 2; spaces > rows; spaces--){
+                System.out.print(" ");
+            }
+            for(int forslash = 0; forslash < rows; forslash++){
                 System.out.print("/");
             }
             System.out.print("**");
-            for(int g = 0; g < i; g++){
+            for(int backslash = 0; backslash < rows; backslash++){
                 System.out.print("\\");
             }
             System.out.println();
@@ -58,19 +66,19 @@ public class DrawRocket {
     public static void drawDown(){
         for (int k = 1; k < (SIZE + 1); k++) {
             System.out.print("|");
-            for (int i = 0; i < (SIZE - k); i++) {
+            for (int i = SIZE - 1; i > (SIZE - k); i--) {
                 System.out.print(".");
             }
-            for (int j = 0; j < k; j++) {
-                System.out.print("/\\");
+            for (int j = SIZE + 1; j > k; j--) {
+                System.out.print("\\/");
             }
-            for (int l = 0; l < (SIZE - k); l++) {
+            for (int l = SIZE - 1; l > (SIZE - k); l--) {
                 System.out.print("..");
             }
-            for (int m = 0; m < k; m++) {
-                System.out.print("/\\");
+            for (int m = SIZE + 1; m > k; m--) {
+                System.out.print("\\/");
             }
-            for (int n = 0; n < (SIZE - k); n++) {
+            for (int n = SIZE - 1; n > (SIZE - k); n--) {
                 System.out.print(".");
             }
             System.out.println("|");
