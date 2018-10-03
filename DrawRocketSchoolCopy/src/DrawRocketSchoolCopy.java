@@ -21,7 +21,7 @@ public class DrawRocketSchoolCopy {
         drawCone();
     }
     public static void drawCone(){  //draws the cone on the bottom and top of rocket
-        for (int rows = 1; rows < (SIZE * 2); rows++){  //loop for the amount of rows in he cones
+        for (int rows = 1; rows < (SIZE * 2); rows++){  //loop for the amount of rows in the cones
             for(int spaces = SIZE * 2; spaces > rows; spaces--){  //prints the indents for the cone
                 System.out.print(" ");
             }
@@ -37,7 +37,7 @@ public class DrawRocketSchoolCopy {
     }
     public static void drawDivider() {  //prints the dividers of the rocket
         System.out.print("+");
-        for (int i = 0; i < (SIZE * 2); i++) { //prints the =* between the +s.
+        for (int i = 0; i < (SIZE * 2); i++) {  //prints the =* between the +s.
             System.out.print("=*");
         }
         System.out.println("+");
