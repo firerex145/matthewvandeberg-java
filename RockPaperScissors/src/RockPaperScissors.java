@@ -21,7 +21,7 @@ public class RockPaperScissors {
             System.out.println("Would you like to play three or five rounds?");
             int rounds = player.nextInt();
             while (!(rounds == 3 || rounds == 5)) {
-                System.out.println("You can only play three or five rounds. Renter how many rounds you want to play.");
+                System.out.println("You can only play three or five rounds. Re-enter how many rounds you want to play.");
                 rounds = player.nextInt();
             }
             while(rounds > 0 - ties){
@@ -30,9 +30,9 @@ public class RockPaperScissors {
                 int compInput = rand.nextInt(3);
                 String roundResults = play(input, compInput);
                 System.out.println(roundResults + "\n");
-                if (roundResults.endsWith("wins") == true) {
+                if (roundResults.endsWith("WINS\033[0;0m") == true) {
                     humanWins++;
-                } else if (roundResults.endsWith("loses") == true) {
+                } else if (roundResults.endsWith("LOSES\033[0;0m") == true) {
                     compWins++;
                 } else {
                     ties++;
@@ -69,7 +69,7 @@ public class RockPaperScissors {
         String human;
         String computer;
         while(playerInput > 2 || playerInput < 0){
-            System.out.println("You have to choose a number between 0-2 for your input. Please renter selection");
+            System.out.println("You have to choose a number between 0-2 for your input. Please re-enter selection");
             playerInput = player.nextInt();
         }
         if (playerInput == 0){
@@ -93,9 +93,9 @@ public class RockPaperScissors {
         System.out.printf(name + " chooses: %10s\n", humanChoice);
         System.out.printf("Computer chooses: %10s\n", compChoice);
         if (humanChoice.equals("paper") && compChoice.equals("rock") || humanChoice.equals("rock") && compChoice.equals("scissors") || humanChoice.equals("scissors") && compChoice.equals("paper")){
-            return(humanChoice + " beats " + compChoice + " - " + name + " wins");
+            return(humanChoice + " beats " + compChoice + " -- " + name + "\033[0;32m WINS\033[0;0m");
         } else if(compChoice.equals("paper") && humanChoice.equals("rock") || compChoice.equals("rock") && humanChoice.equals("scissors") || compChoice.equals("scissors") && humanChoice.equals("paper")){
-            return(compChoice + " beats " + humanChoice + " - " + name + " loses");
+            return(compChoice + " beats " + humanChoice + " -- " + name + "\033[0;31m LOSES\033[0;0m");
         } else {
             return("Match results in a tie");
         }
