@@ -32,9 +32,21 @@ public class RockPaperScissors {
             int compWins = 0;  //initializes an integer named "compWins" (to track number of rounds the computer won in a game) and gives it a value of 0.
             int ties = 0;      //initializes an integer named "ties" (to track number of rounds that were ties in a game) and gives it a value of 0.
             int rematchPrompt = 0; //initializes an integer named "rematchPrompt" (used when asking user if they want to play again) and gives it a value of 0.
+            int x = 0;
+
+            boolean hasInt;
+
+            int rounds = 0;
 
             System.out.println("Would you like to play three or five rounds?"); //prompts the user to input how many rounds to play
-            int rounds = player.nextInt(); //initializes an integer named "rounds" which stores the number of rounds to play specified by the user
+            hasInt = player.hasNextInt();
+            while (!(hasInt)) {
+                System.out.println("You need to input a number");
+                player.next();
+                hasInt = player.hasNextInt();
+            }
+
+            rounds = player.nextInt(); //initializes an integer named "rounds" which stores the number of rounds to play specified by the user
 
             while (!(rounds == 3 || rounds == 5)) { //runs while the number of rounds does not equal 3 or 5 to make sure user only plays 3 or 5 rounds
                 System.out.println("You can only play three or five rounds. Re-enter how many rounds you want to play."); //tells user to only input 3 or 5 for number of rounds
