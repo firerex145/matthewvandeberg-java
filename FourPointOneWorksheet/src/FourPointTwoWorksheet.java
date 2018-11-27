@@ -1,3 +1,10 @@
+/*
+Matthew Vandeberg
+11-27-18
+AP CS A
+4.2 Worksheet
+*/
+
 import java.util.Arrays;
 
 public class FourPointTwoWorksheet {
