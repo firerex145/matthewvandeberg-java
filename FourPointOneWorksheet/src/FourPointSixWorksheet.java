@@ -80,7 +80,7 @@ public class FourPointSixWorksheet {
                 multiTable[i][j] = i++;  //fills the first column with numbers 1-10
             }                            //
         }                                //
-        
+
         for (int i = 0; i < 10; i++){                                   //
             for (int j = 0; j < multiTable[0].length; j++){             //
                 multiTable[i][j] = multiTable[i][0] * multiTable[0][j]; //does the multiplication and fills the rest of the table
