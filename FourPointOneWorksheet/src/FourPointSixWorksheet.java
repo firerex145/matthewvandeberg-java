@@ -65,5 +65,34 @@ public class FourPointSixWorksheet {
             matrix[1][i] = matrix[4][i];
             matrix[4][i] = temp1;
         }
+
+        //Exercise 14
+        int[][] multiTable = new int[10][12]; //creates the multiplication table
+
+        for (int i = 0; i < 1; i++){                          //
+            for (int j = 0; j < multiTable[0].length; j++){   //
+                multiTable[i][j] = j++;                       //fills the top row with numbers 1-12
+            }                                                 //
+        }                                                     //
+
+        for (int i = 0; i < 10; i++){    //
+            for (int j = 0; j < 1; j++){ //
+                multiTable[i][j] = i++;  //fills the first column with numbers 1-10
+            }                            //
+        }                                //
+        
+        for (int i = 0; i < 10; i++){                                   //
+            for (int j = 0; j < multiTable[0].length; j++){             //
+                multiTable[i][j] = multiTable[i][0] * multiTable[0][j]; //does the multiplication and fills the rest of the table
+            }                                                           //
+        }                                                               //
+
+        //Exercise 15
+        int temp2;
+        for(int i = 0; i < 10; i++){
+            temp2 = multiTable[i][2];
+            multiTable[i][2] = multiTable[i][6];
+            multiTable[i][6] = temp2;
+        }
     }
 }
