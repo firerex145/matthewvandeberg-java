@@ -34,7 +34,7 @@ public class RollDice {
     }
 
     public static String[][] defDice(){ //Makes a graphical representation of each face of a six-sided die.
-        System.out.println("At defDice.");
+        //System.out.println("At defDice.");
 
         String[][] dice = new String[6][5 * DICENUM]; //Creates multidimensional array, dice, that stores a graphical version of each face of a die.
 
@@ -70,7 +70,7 @@ public class RollDice {
     }
 
     public static void rollDice(String[][] diceSet, String[][] rolledDice){ //"Rolls" the number of dice according to value of DICENUM.
-        System.out.println("At rollDice.");
+        //System.out.println("At rollDice.");
 
         for (int i = 0; i < DICENUM; i++){
             int numberRoll = (int)(Math.random() * 6); //Assign a random number between one and six the variable numberRoll.
@@ -82,7 +82,7 @@ public class RollDice {
     }
 
     public static void printDice(String[][] rolled){ //prints the graphical representation of the "rolled" dice.
-        System.out.println("At printDice.");
+        //System.out.println("At printDice.");
         for (int i = 0; i < rolled[0].length / DICENUM; i++){
             for (int j = 0; j < DICENUM; j++){
                 System.out.print(rolled[j][i]);
@@ -91,7 +91,7 @@ public class RollDice {
         }
     }
     public static void drawLine(){ //Draws a line between the "rolls" who's length is determined by the amount of dice being "rolled."
-        System.out.println("At drawLine.");
+        //System.out.println("At drawLine.");
         for (int i = 0; i < DICENUM; i++) {
             System.out.print("------------------");
         }
