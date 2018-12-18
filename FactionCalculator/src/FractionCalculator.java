@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.Scanner;
 
 public class FractionCalculator {
@@ -15,24 +16,25 @@ public class FractionCalculator {
             }
         }
     }
-    public static String add(final int firstNume, final int firstDenom, final int secondNume, final int secondDenom) {
+    public static String add(int firstNume, int firstDenom, int secondNume, int secondDenom) {
         return "";
     }
 
-    public static String subtract(final int firstNume, final int firstDenom, final int secondNume, final int secondDenom) {
+    public static String subtract(int firstNume, int firstDenom, int secondNume, int secondDenom) {
         return "";
     }
 
-    public static String multiply(final int firstNume, final int firstDenom, final int secondNume, final int secondDenom) {
+    public static String multiply(int firstNume, int firstDenom, int secondNume, int secondDenom) {
         return "";
     }
 
-    public static String divide(final int firstNume, final int firstDenom, final int secondNume, final int secondDenom) {
+    public static String divide(int firstNume, int firstDenom, int secondNume, int secondDenom) {
         return "";
     }
 
-    public static void parse(final String equation) {
-        ;
-        return 0;
+    public static void parse(String equation) {
+        String[] arrayOfEquation = new String[3];
+        arrayOfEquation = equation.split("");
+        System.out.println(arrayOfEquation.toString());
     }
 }
