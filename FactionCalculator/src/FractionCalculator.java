@@ -2,20 +2,35 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class FractionCalculator {
+    static int divisible = 0;
+    static int wholeNum = 0;
+    static int n = 2;
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
         String[] equationArray = new String[7];
         int loop = 0;
         while (loop == 0) {
-            System.out.print("Enter something: ");
-            String something = input.nextLine();
-            if (something.contains("quit")) {
-                System.out.println("Program ended");
-                loop++;
-            } else {
-                equationArray = parse(something);
+            int inputLoop = 0;
+            while (inputLoop == 0) {
+                System.out.print("Enter something: ");
+                String something = input.nextLine();
+                if (something.contains("quit")) {
+                    System.out.println("Program ended");
+                    loop++;
+                    inputLoop++;
+                    break;
+                } else {
+                    equationArray = parse(something);
+                }
+                if (equationArray.length < 3 || equationArray.length > 8 || equationArray.toString().matches("[;'.,<>?:{}|=_`~!@#$%^&*()abcdefghijklmnopqrstuvwxyz/]")) {
+                    System.out.println("Invalid input.");
+                } else {
+                    inputLoop++;
+                }
             }
-
+            if (loop == 1){
+                break;
+            }
             String operator = "";
             int operatorIndex = 0;
             int divide = 0;
@@ -72,6 +87,9 @@ public class FractionCalculator {
                 secondNume = Integer.parseInt(equationArray[equationArray.length - 1]) * Integer.parseInt(equationArray[operatorIndex + 1]) + Integer.parseInt(equationArray[operatorIndex + 2]);
                 secondDenom = Integer.parseInt(equationArray[equationArray.length - 1]);
             }
+            wholeNum = 0;
+            n = 2;
+            divisible = 0;
             System.out.println(firstNume + "/" + firstDenom + " " + secondNume + "/" + secondDenom);
             if (operator.equals("+")) {
                 System.out.println(add(firstNume, firstDenom, secondNume, secondDenom));
@@ -106,7 +124,41 @@ public class FractionCalculator {
         if (numerator == denominator) {
             return "1";
         }
-        return numerator + "/" + denominator;
+
+        while (divisible == 0) {
+            if (n > numerator || n > denominator) {
+                divisible++;
+            }
+            if (numerator % n == 0 && denominator % n == 0){
+                while (numerator % n == 0 && denominator % n == 0) {
+                    numerator = numerator / n;
+                    denominator = denominator / n;
+                }
+            }
+            n++;
+        }
+
+        if (numerator % denominator == 0) {
+            numerator /= denominator;
+            denominator /= denominator;
+        } else if (denominator % numerator == 0) {
+            denominator /= numerator;
+            numerator /= numerator;
+        }
+        if (denominator == 1) {
+            return numerator + "";
+        }
+        if (numerator > denominator) {
+            int temp = numerator;
+            while (temp - denominator > 0) {
+                temp = temp - denominator;
+                wholeNum++;
+            }
+            numerator = temp;
+            return wholeNum + "_" + numerator + "/" + denominator;
+        } else {
+            return numerator + "/" + denominator;
+        }
     }
 
     public static String subtract(int firstNume, int firstDenom, int secondNume, int secondDenom) {
@@ -130,6 +182,39 @@ public class FractionCalculator {
         if (numerator == denominator) {
             return "1";
         }
+
+        while (divisible == 0) {
+            if (n > numerator || n > denominator) {
+                divisible++;
+            }
+            if (numerator % n == 0 && denominator % n == 0){
+                while (numerator % n == 0 && denominator % n == 0) {
+                    numerator = numerator / n;
+                    denominator = denominator / n;
+                }
+            }
+            n++;
+        }
+
+        if (numerator % denominator == 0) {
+            numerator /= denominator;
+            denominator /= denominator;
+        } else if (denominator % numerator == 0) {
+            denominator /= numerator;
+            numerator /= numerator;
+        }
+        if (denominator == 1) {
+            return numerator + "";
+        }
+        if (numerator > denominator) {
+            int temp = numerator;
+            while (temp - denominator > 0) {
+                temp = temp - denominator;
+                wholeNum++;
+            }
+            numerator = temp;
+            return wholeNum + "_" + numerator + "/" + denominator;
+        }
         return numerator + "/" + denominator;
     }
 
@@ -144,13 +229,44 @@ public class FractionCalculator {
             numerator = Math.abs(numerator);
             denominator = Math.abs(denominator);
         }
-        if (denominator == 1) {
-            return numerator + "";
-        }
         if (numerator == denominator) {
             return "1";
         }
-        return numerator + "/" + denominator;
+
+        while (divisible == 0) {
+            if (n > numerator || n > denominator) {
+                divisible++;
+            }
+            if (numerator % n == 0 && denominator % n == 0){
+                while (numerator % n == 0 && denominator % n == 0) {
+                    numerator = numerator / n;
+                    denominator = denominator / n;
+                }
+            }
+            n++;
+        }
+
+        if (numerator % denominator == 0) {
+            numerator /= denominator;
+            denominator /= denominator;
+        } else if (denominator % numerator == 0) {
+            denominator /= numerator;
+            numerator /= numerator;
+        }
+        if (denominator == 1) {
+            return numerator + "";
+        }
+        if (numerator > denominator) {
+            int temp = numerator;
+            while (temp - denominator > 0) {
+                temp = temp - denominator;
+                wholeNum++;
+            }
+            numerator = temp;
+            return wholeNum + "_" + numerator + "/" + denominator;
+        } else {
+            return numerator + "/" + denominator;
+        }
     }
 
     public static String divide(int firstNume, int firstDenom, int secondNume, int secondDenom) {
@@ -164,13 +280,44 @@ public class FractionCalculator {
             numerator = Math.abs(numerator);
             denominator = Math.abs(denominator);
         }
-        if (denominator == 1) {
-            return numerator + "";
-        }
         if (numerator == denominator) {
             return "1";
         }
-        return numerator + "/" + denominator;
+
+        while (divisible == 0) {
+            if (n > numerator || n > denominator) {
+                divisible++;
+            }
+            if (numerator % n == 0 && denominator % n == 0){
+                while (numerator % n == 0 && denominator % n == 0) {
+                    numerator = numerator / n;
+                    denominator = denominator / n;
+                }
+            }
+            n++;
+        }
+
+        if (numerator % denominator == 0) {
+            numerator /= denominator;
+            denominator /= denominator;
+        } else if (denominator % numerator == 0) {
+            denominator /= numerator;
+            numerator /= numerator;
+        }
+        if (denominator == 1) {
+            return numerator + "";
+        }
+        if (numerator > denominator) {
+            int temp = numerator;
+            while (temp - denominator > 0) {
+                temp = temp - denominator;
+                wholeNum++;
+            }
+            numerator = temp;
+            return wholeNum + "_" + numerator + "/" + denominator;
+        } else {
+            return numerator + "/" + denominator;
+        }
     }
 
     public static String[] parse(String equation) {
