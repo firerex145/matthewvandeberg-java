@@ -22,7 +22,14 @@ public class FractionCalculator {
                 } else {
                     equationArray = parse(something);
                 }
-                if (equationArray.length < 3 || equationArray.length > 8 || equationArray.toString().matches("[;'.,<>?:{}|=_`~!@#$%^&*()abcdefghijklmnopqrstuvwxyz/]")) {
+                int error = 0;
+                for (String i : equationArray){
+                    if (i.matches("[;'.,<>?:{}|=_`~!@#$%^&()a-z/A-Z]")) {
+                        error++;
+                        break;
+                    }
+                }
+                if (equationArray.length < 3 || equationArray.length > 8 || error == 1 || equationArray[0].matches("[-+*/ ]") || equationArray[equationArray.length - 1].matches("[-+*/ ]")) {
                     System.out.println("Invalid input.");
                 } else {
                     inputLoop++;
