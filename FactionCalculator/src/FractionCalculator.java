@@ -59,6 +59,7 @@ public class FractionCalculator {
             if (equationArray[1].equals("+") || equationArray[1].equals("-") || equationArray[1].equals("*") || equationArray[1].equals("/")) {
                 firstDenom = 1;
                 firstNume = Integer.parseInt(equationArray[0]);
+                System.out.println("Whole number " + firstNume);
             } else if (equationArray[3].equals("+") || equationArray[3].equals("-") || equationArray[3].equals("*") || equationArray[3].equals("/")) {
                 if (Integer.parseInt(equationArray[0]) < 0) {
                     firstNume = (Integer.parseInt(equationArray[2]) * Integer.parseInt(equationArray[0]) - Integer.parseInt(equationArray[1]));
@@ -67,9 +68,13 @@ public class FractionCalculator {
                 }
                 firstDenom = Integer.parseInt(equationArray[2]);
                 equationArray[0] = "0";
+                System.out.println("First Numerator " + firstNume);
+                System.out.println("First Denominator " + firstDenom);
             } else {
                 firstNume = Integer.parseInt(equationArray[0]);
                 firstDenom = Integer.parseInt(equationArray[1]);
+                System.out.println("First Numerator " + firstNume);
+                System.out.println("First Denominator " + firstDenom);
             }
             int secondNume;
             int secondDenom;
@@ -77,22 +82,32 @@ public class FractionCalculator {
                 if ((operatorIndex + 1) == (equationArray.length - 2)) {
                     secondNume = Integer.parseInt(equationArray[operatorIndex + 1]);
                     secondDenom = 1;
+                    System.out.println("Whole Number " + secondNume);
                 } else if ((operatorIndex + 1) == (equationArray.length - 3)) {
                     secondNume = Integer.parseInt(equationArray[operatorIndex + 1]);
                     secondDenom = Integer.parseInt(equationArray[equationArray.length - 2]);
+                    System.out.println("Second Numerator " + secondNume);
+                    System.out.println("Second Denominator " + secondDenom);
                 } else {
                     secondNume = Integer.parseInt(equationArray[equationArray.length - 2]) * Integer.parseInt(equationArray[operatorIndex + 1]) + Integer.parseInt(equationArray[operatorIndex + 2]);
                     secondDenom = Integer.parseInt(equationArray[equationArray.length - 2]);
+                    System.out.println("Second Numerator " + secondNume);
+                    System.out.println("Second Denominator " + secondDenom);
                 }
             } else if ((operatorIndex + 1) == (equationArray.length - 1)) {
                 secondNume = Integer.parseInt(equationArray[operatorIndex + 1]);
                 secondDenom = 1;
+                System.out.println("Whole Number " + secondNume);
             } else if ((operatorIndex + 1) == (equationArray.length - 2)) {
                 secondNume = Integer.parseInt(equationArray[operatorIndex + 1]);
                 secondDenom = Integer.parseInt(equationArray[equationArray.length - 1]);
+                System.out.println("Second Numerator " + secondNume);
+                System.out.println("Second Denominator " + secondDenom);
             } else {
                 secondNume = Integer.parseInt(equationArray[equationArray.length - 1]) * Integer.parseInt(equationArray[operatorIndex + 1]) + Integer.parseInt(equationArray[operatorIndex + 2]);
                 secondDenom = Integer.parseInt(equationArray[equationArray.length - 1]);
+                System.out.println("Second Numerator " + secondNume);
+                System.out.println("Second Denominator " + secondDenom);
             }
             wholeNum = 0;
             n = 2;
