@@ -12,7 +12,7 @@ public class FractionCalculator {
         while (loop == 0) {
             int inputLoop = 0;
             while (inputLoop == 0) {
-                System.out.print("Enter something: ");
+                System.out.print("Enter an equation or enter quit to exit: ");
                 String something = input.nextLine();
                 if (something.contains("quit")) {
                     System.out.println("Program ended");
@@ -24,12 +24,12 @@ public class FractionCalculator {
                 }
                 int error = 0;
                 for (String i : equationArray){
-                    if (i.matches("[;'.,<>?:{}|=_`~!@#$%^&()a-z/A-Z]")) {
+                    if (i.matches("[;'.,<>?:{}|=_`~!@#$%^&()a-z/A-Z]") /*|| i.isEmpty()*/) {
                         error++;
                         break;
                     }
                 }
-                if (equationArray.length < 3 || equationArray.length > 8 || error == 1 || equationArray[0].matches("[-+*/ ]") || equationArray[equationArray.length - 1].matches("[-+*/ ]")) {
+                if (equationArray.length < 3 || equationArray.length > 8 || error == 1 || equationArray[0].matches("[-+*/ ]null") || equationArray[equationArray.length - 1].matches("[-+*/ ]")) {
                     System.out.println("Invalid input.");
                 } else {
                     inputLoop++;
@@ -155,11 +155,14 @@ public class FractionCalculator {
         if (denominator == 1) {
             return numerator + "";
         }
-        if (numerator > denominator) {
-            int temp = numerator;
+        if (Math.abs(numerator) > denominator) {
+            int temp = Math.abs(numerator);
             while (temp - denominator > 0) {
                 temp = temp - denominator;
                 wholeNum++;
+            }
+            if (numerator < 0) {
+                wholeNum = -wholeNum;
             }
             numerator = temp;
             return wholeNum + "_" + numerator + "/" + denominator;
@@ -172,31 +175,13 @@ public class FractionCalculator {
         int numerator;
         int denominator;
         if (firstDenom == secondDenom) {
-            System.out.println("equal denominators");
             numerator = firstNume - secondNume;
             denominator = firstDenom;
         } else {
-            System.out.println("unequal denominators");
             numerator = (firstNume * secondDenom) - (secondNume * firstDenom);
             denominator = firstDenom * secondDenom;
         }
-        if (denominator < 0) {
-            System.out.println("negative denominator");
-            denominator = Math.abs(denominator);
-            numerator = -numerator;
-        }
-        if (numerator < 0 && denominator < 0) {
-            System.out.println("negative fraction");
-            numerator = Math.abs(numerator);
-            denominator = Math.abs(denominator);
-        }
-        if (numerator == denominator) {
-            System.out.println("one");
-            return "1";
-        }
-
         while (divisible == 0) {
-            System.out.println("divide");
             if (n > Math.abs(numerator) || n > denominator) {
                 divisible++;
             }
@@ -208,8 +193,6 @@ public class FractionCalculator {
             }
             n++;
         }
-        System.out.println("simplified");
-
         if (numerator % denominator == 0) {
             numerator /= denominator;
             denominator /= denominator;
@@ -217,15 +200,23 @@ public class FractionCalculator {
             denominator /= numerator;
             numerator /= numerator;
         }
-        System.out.println("simplified between numerator and denominator");
+        if (numerator == denominator) {
+            return "1";
+        }
+        if (denominator < 0) {
+            denominator = Math.abs(denominator);
+            numerator = -numerator;
+        }
+        if (numerator < 0 && denominator < 0) {
+            numerator = Math.abs(numerator);
+            denominator = Math.abs(denominator);
+        }
         if (denominator == 1) {
-            System.out.println("one after simplification");
             return numerator + "";
         }
-        if (numerator > denominator) {
-            System.out.println("numerator greater than denominator");
-            int temp = numerator;
-            while (Math.abs(temp - denominator) > 0) {
+        if (Math.abs(numerator) > denominator) {
+            int temp = Math.abs(numerator);
+            while (temp - denominator > 0) {
                 if(temp < 0) {
                     temp += denominator;
                 } else {
@@ -237,10 +228,8 @@ public class FractionCalculator {
                 wholeNum = -wholeNum;
             }
             numerator = temp;
-            System.out.println("mixed number");
             return wholeNum + "_" + numerator + "/" + denominator;
         }
-        System.out.println("return normal fraction");
         return numerator + "/" + denominator;
     }
 
@@ -282,11 +271,14 @@ public class FractionCalculator {
         if (denominator == 1) {
             return numerator + "";
         }
-        if (numerator > denominator) {
-            int temp = numerator;
+        if (Math.abs(numerator) > denominator) {
+            int temp = Math.abs(numerator);
             while (temp - denominator > 0) {
                 temp = temp - denominator;
                 wholeNum++;
+            }
+            if (numerator < 0) {
+                wholeNum = -wholeNum;
             }
             numerator = temp;
             return wholeNum + "_" + numerator + "/" + denominator;
@@ -333,11 +325,14 @@ public class FractionCalculator {
         if (denominator == 1) {
             return numerator + "";
         }
-        if (numerator > denominator) {
-            int temp = numerator;
+        if (Math.abs(numerator) > denominator) {
+            int temp = Math.abs(numerator);
             while (temp - denominator > 0) {
                 temp = temp - denominator;
                 wholeNum++;
+            }
+            if (numerator < 0) {
+                wholeNum = -wholeNum;
             }
             numerator = temp;
             return wholeNum + "_" + numerator + "/" + denominator;
