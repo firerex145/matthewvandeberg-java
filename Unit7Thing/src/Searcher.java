@@ -1,10 +1,14 @@
-
+import java.util.Arrays;
 
 public class Searcher {
     public static void main(String[] args) {
-        int[] array = {0, 12, 50, 75, 112, 113, 114, 200, 500, 1000};
-        System.out.println(seqSearch(array, 12));
-        System.out.println(binarySearch(array, 1));
+        //int[] array = {0, 12, 50, 75, 112, 113, 114, 200, 500, 1000};
+        //System.out.println(seqSearch(array, 12));
+        //System.out.println(binarySearch(array, 1));
+
+        int[] selArray = {22, 18, 12, -4, 27, 30, 36, 50, 7, 68, 91, 56, 2};
+
+        System.out.println(Arrays.toString(selectionSort(selArray)));
     }
 
     public static int seqSearch(int[] arr, int target) {
@@ -40,5 +44,18 @@ public class Searcher {
             }
         }
         return mid;
+    }
+
+    public static int[] selectionSort(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            for(int j = i; j < arr.length; j++) {
+                if (arr[i] > arr[j]) {
+                    int temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+        return arr;
     }
 }
