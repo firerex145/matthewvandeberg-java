@@ -51,6 +51,21 @@ public class DeckTester {
 		System.out.println();
 		System.out.println();
 
-		/* *** TO BE COMPLETED IN ACTIVITY 4 *** */
+		String[] newRanks = {"ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king"};
+		String[] newSuits = {"spades", "clubs", "hearts", "diamonds"};
+		int[] newPointValues = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
+		Deck newD = new Deck(newRanks, newSuits, newPointValues);
+		System.out.println("Standard 52 card deck shuffled once: ");
+		System.out.println(newD.toString() + "\n");
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < i; j++){
+				newD.deal();
+			}
+			System.out.println("\n" + newD.size() + "\n");
+			newD.shuffle();
+			System.out.println("Shuffled deck: ");
+			System.out.println(newD.toString());
+			System.out.println(newD.size());
+		}
 	}
 }
